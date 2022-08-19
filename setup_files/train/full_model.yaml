@@ -1,0 +1,39 @@
+descriptions:
+  name: "full_model_relu_100x"
+  exp_family: "final"
+  splits:
+    - "train"
+    - "val"
+
+paths:
+  splits_file: "data/source/grid_geosplit_not_rescaled.geojson"
+  images_root: "data/source/patches_1m_corrected/"
+
+hyperparams:
+  epochs: 15
+  check_val_every_n: 1
+  lr: 0.0005
+  decay: 0.0001
+  batch_size: 20
+  workers: 2
+  gpu_nums:
+    - 3
+
+labels:
+  dim_scores:
+    - rlbbev
+    - rlbfys
+    - rlbvei
+    - rlbvrz
+    - rlbwon
+
+transforms:
+  train:
+    to_tensor: true
+
+    warps_and_distorts:
+      hflip: 0.5
+      vflip: 0.5
+
+  val:
+    to_tensor: true

@@ -1,0 +1,21 @@
+descriptions:
+  name: "baseline"
+  exp_family: "final"
+  splits:
+    - "test"
+
+paths:
+  splits_file:   "data/source/grid_geosplit_not_rescaled.geojson"
+  images_root:   "data/source/patches_1m_corrected/"
+  train_dir:     "runs/final/baseline/2022-08-14_08:20:01/"
+  weights_file:  "train/outputs/states/epoch=14-val_lbm_mse=0.03.ckpt"
+
+hyperparams: 
+  batch_size: 20
+  workers: 4
+  gpu_nums:
+    - 3
+
+transforms:
+  test:
+    to_tensor: true
