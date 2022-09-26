@@ -25,7 +25,7 @@ class DimensionMLP(nn.Module):
         x = self.reduce(x)
         features = x.relu()
         score = self.dim_score(features)
-        return [features, score]
+        return score
 
 class LBMDimensionNet(nn.Module):
     def __init__(self, score_info):
@@ -94,7 +94,7 @@ class LBMDimensionModel(pl.LightningModule):
             self.train_tracker = VarTrackerLBM(self.out_dir, 'train', label_info)
         if 'val' in splits:
             self.val_tracker = VarTrackerLBM(self.out_dir, 'val', label_info)
-        if 'test' in splits:
+        if 'test' in splits or 'all' in splits:
             self.test_tracker = VarTrackerLBM(self.out_dir, 'test', label_info)
 
     def forward(self, x):

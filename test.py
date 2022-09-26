@@ -25,7 +25,7 @@ np.set_printoptions(suppress=True)
 # warnings.simplefilter(action='ignore', category=FutureWarning)
 
 ##### LOAD SET-UP FILE #####
-setup_file = "setup_files/test/baseline.yaml"
+setup_file = "setup_files/test/full_model.yaml"
 with open(setup_file) as file:
     exp_params = yaml.full_load(file)
 
@@ -77,16 +77,15 @@ organizer.store_codebase(['.py'])
 ##### SETUP MODEL #####
 ### Model loading depends on state dicts specified in the set-up yaml ###
 ## Loading a fully-trained model
-## Loading a fully-trained model
 
-if 'label' in exp_params:
+if 'labels' in exp_params:
     model = LBMDimensionModel(organizer.root_path+'outputs/', run_name, label_info, exp_params['descriptions']['splits'])
 else:
     model = LBMBaselineModel(organizer.root_path+'outputs/', run_name, label_info, exp_params['descriptions']['splits'])
 
 if 'weights_file' in exp_params['paths']:
     weights_file = train_dir + exp_params['paths']['weights_file']
-    state_dict = torch.load(weights_file)['state_dict']
+    state_dict = torch.load(weights_file, map_location=torch.device('cpu'))['state_dict']
     model.load_state_dict(state_dict)
 
 model = model.eval()

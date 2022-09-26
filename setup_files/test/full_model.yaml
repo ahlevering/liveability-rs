@@ -1,5 +1,5 @@
 descriptions:
-  name: "full_model_100x"
+  name: "DELLME"
   exp_family: "final"
   splits:
     - "all" # Run inference on all examples
@@ -15,7 +15,7 @@ hyperparams:
   batch_size: 20
   workers: 4
   gpu_nums:
-    - 2
+    - 0
 
 
 labels:
