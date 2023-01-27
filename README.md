@@ -8,4 +8,6 @@ The full paper is published as open-access here: <https://doi.org/10.1016/j.rse.
 
 <img src="data_method.jpg" width="450" height="300" />
 
-The dataset will be uploaded to Zenodo on 26/01/2023. Code and scripts for making your own dataset from the LBM labels and the Dutch publicly available aerial images will be released in the coming quarter for an upcoming publication. Stay tuned! 
+The dataset is available on the following Zenodo library: <https://zenodo.org/record/7574211>
+
+Code and scripts for making your own dataset from the LBM labels and the Dutch publicly available aerial images will be released in the coming quarter for an upcoming publication. Stay tuned! 
